@@ -16,45 +16,100 @@ Ocean Wong								\\
 \end{center}
 
 When attempting to find the solution to the following question:
-"
-How can the average number of collisions necessary to thermalise a fission neutron (slow
+
+"How can the average number of collisions necessary to thermalise a fission neutron (slow
 it down from 2 MeV to 1 eV) in deuterium be calculated?
 "
-Several fellow students has stubled across the following misconception.
 
-\section{Incorrect method}
+When deriving the number of collision required $N$ for a given $\alpha = (\frac{A-1}{A+1})^2$ (where $A$ is the atomic mass), several fellow students has stumbled across the following misconception:
+
+\section{Incorrect method}\label{Incorrect}
 An intutive method is to do the following:
 
 \begin{align}
 	\overline{E_f} &= {E_i} \frac{(\alpha+1)}{2} =  \int P(E) E dE \\
 	\overline{\Delta u} &= ln \left( \frac{E_i}{\overline{E_f}} \right)	\\
-	N &= \frac{\left(\Delta u () \right)} {\left( \overline{\Delta u} \right)}
+	N &= \frac{ ln \left( \frac{2 MeV}{1eV} \right)} { \overline{\Delta u} }
 \end{align}
 
 Which corresponds to the procedure as follows:
 \begin{enumerate}
-	\item Find the average energy lost $\bar{E}$
+	\item Find the average energy lost $\overline{E}$
 	\item Calculate the lethargy change it represents
-	\item Find the number of collisions (each with energy $\bar{E}$ lost) required to slow it down.
+	\item Find the number of collisions (each with energy $\overline{E}$ lost) required to slow it down.
 \end{enumerate}
 
 In a single equation, this is represented as:
 \begin{align}
-	N=\frac{\Delta u ( \frac{}{} )}{\Delta u \left(\int P(E) E dE \right) }
+	N=\frac{u(2MeV) - 2(1eV)}{\Delta u \left(\int E P(E) dE \right) }
+	N=\frac{ln\left(2000000\right)}{ln\left(\frac{1+\alpha}{2} \right)}
+\end{align}
+Which gives the incorrect answer of 22.7 collisions for 2MeV neutrons moderated by Deuterium $A=2$
+
+\section{Correct method} \label{Correct}
+	However, the correct way to do so is 
+\begin{align}
+	\overline{\Delta u} &= \int (\Delta u) P\big(\Delta u \big) d(\Delta u)	\\
+		&= \int\limits_{E_f=\alpha E_i}^{E_f=E_i} \Delta u (E_f) P\big(\Delta u (E_f) \big) \frac{d(\Delta u)}{dE_f} dE_f \label{scaleUprob}
 \end{align}
 
-\section{Correct method}
-	However, this isn't correct. We know that the size of the
+where the conversion to $\Delta u$ is carried out as follows:
+\begin{align}
+	\Delta u (E_f) = ln\left(\frac{E_i}{E_f} \right)
+\end{align}
+and the probability distribution in $u$ space can be converted back into probability distribution in $E_f$ space in a straightforward manner:
+\begin{align}
+	P(E_f) dE_f &= P(\Delta u (E_f) ) {d(\Delta u)}	\\
+	P(\Delta u (E_f) ) \frac{d(\Delta u)}{dE_f} &= P(E_f)
+\end{align}
+simplifying equation \ref{scaleUprob}
+\begin{align}
+	\overline{\Delta u} &=	\int\limits_{E_f=\alpha E_i}^{E_f=E_i} \big(\Delta u (E_f) \big) P\big(E_f \big) dE_f	\\
+						&=	\int\limits_{E_f=\alpha E_i}^{E_f=E_i} ln \left( \frac{E_i}{E_f} \right) P\big(E_f \big) dE_f \\
+\end{align}
+
+Which will be evaluated to
+\begin{align}
+	\overline{\Delta u} &=	1+\frac{\alpha}{1+\alpha} ln(\alpha)	\\
+	N &= \frac{ ln \left( \frac{2 MeV}{1eV} \right)} { \overline{\Delta u} }
+\end{align}
+Which gives 20.8 collisions for 2MeV neutrons moderated by Deuterium $A=2$
+
+The numerical accuracy of this answer can be verified with the code
+
+NeutronLethargy/MonteCarlo.py
+
+in the repository 
+
+https://github.com/OceanNuclear/NeutronLethargy
 
 \section{Explanation}
+	The correct method does the following:
+	
+	*Insert figure 1
+	
+	Multiplying $P(E)$ by $\Delta u(E)$ gives a quantity with the dimension of "Lethargy per unit energy".
+	Integrating $\Delta u(E) P(E)$ gives the mean lethargy change.
 
-	One small excursion to the left will contribute a much larger increment in lethargy gain than a small excursion to the right. 
-	This means that a collision losing slightly more than $\bar{E}$ requires multiple collision losing slightly less energy than $\bar{E}$ to counter its effect.
+	
+	Alternatively, if one wishes to work with $\Delta u$,
+	
+	*Insert Figure 2
+	
+	In figure \ref{Fig2}, multiplying $P(u)$ 
+	Integrating $\Delta u(E) P(E)$ gives the mean lethargy change.
 
-\subsection{Arithmatic mean Geometric mean}
-	Why geometric mean should be applied
+	
+	However, in section \ref{Incorrect}, the following method is used (See figure \ref{Fig3}) :
+	*Insert Figure 3
+	Due to the non-linearity of the $\Delta u$ vs $E$ a small 'excursion' to the left will contribute a much larger increment in lethargy gain than a small 'excursion' to the right.
+	
+	Note that if $\alpha$ is very close to 1, then this non-linearity can be ignored, i.e. at very large atomic masses, e.g. ${}^{238}$U, the above two methods should give very similar results.
+
+	This means that a collision losing slightly more than $\overline{E}$ requires multiple collision losing slightly less energy than $\overline{E}$ to counter its effect.
+	This problem is actually a confusion between arithematic mean (section \ref{Incorrect}) and geometric mean (section \ref{Correct}) in disguise. The former method falsely assumes that an arithmatic mean can be done, finding the arithmatic average of the energy lost, instead of the geometric average of $E$ (which is identical to the arithmetic average of $\Delta u$).
 
 \section{Acknowledgement}
-	Thank you for Sam Dyson from 2018-19 class of PTNR
+	Many thanks to Sam Dyson for his helpful input in discussing and assisting the formulation of this paper.
 
 \end{document}
