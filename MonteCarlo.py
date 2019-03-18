@@ -24,5 +24,5 @@ for n in range(NumSim):
 	NumCol = Thermalize()
 	ColToTherm.append(NumCol)
 print(np.mean(ColToTherm))
-plt.hist(ColToTherm,bins=max(ColToTherm)-min(ColToTherm))
+plt.hist(ColToTherm,bins=max(ColToTherm)-min(ColToTherm)+1)
 plt.show()

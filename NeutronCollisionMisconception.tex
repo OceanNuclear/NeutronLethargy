@@ -1,0 +1,60 @@
+%\nonstopmode
+\hbadness=100000
+\documentclass[a4paper, 12pt]{article}
+\usepackage{verbatim,amsmath,graphicx,geometry,textcomp,url,caption}
+\geometry{ a4paper, total={170mm,257mm}, left=20mm, top=20mm}
+
+\usepackage[toc, page]{appendix}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{subr}{rgb}{0.8, 0.33, 0.0}
+
+\begin{document}
+\begin{center}
+Demystifying neutron lethargy			\\
+Ocean Wong								\\
+2019-03-18
+\end{center}
+
+When attempting to find the solution to the following question:
+"
+How can the average number of collisions necessary to thermalise a fission neutron (slow
+it down from 2 MeV to 1 eV) in deuterium be calculated?
+"
+Several fellow students has stubled across the following misconception.
+
+\section{Incorrect method}
+An intutive method is to do the following:
+
+\begin{align}
+	\overline{E_f} &= {E_i} \frac{(\alpha+1)}{2} =  \int P(E) E dE \\
+	\overline{\Delta u} &= ln \left( \frac{E_i}{\overline{E_f}} \right)	\\
+	N &= {\left(\Delta u () \right)} {\left( \overline{\Delta u} \right)}
+\end{align}
+
+Which corresponds to the procedure as follows:
+\begin{enumerate}
+	\item Find the average energy lost $\bar{E}$
+	\item Calculate the lethargy change it represents
+	\item Find the number of collisions (each with energy $\bar{E}$ lost) required to slow it down.
+\end{enumerate}
+
+In a single equation, this is represented as:
+\begin{align}
+	N=\frac{\Delta u ( \frac{}{} )}{\Delta u \left(\int P(E) E dE \right) }
+\end{align}
+
+\section{Correct method}
+	However, this isn't correct. We know that the size of the
+
+\section{Explanation}
+
+	One small excursion to the left will contribute a much larger increment in lethargy gain than a small excursion to the right. 
+	This means that a collision losing slightly more than $\bar{E}$ requires multiple collision losing slightly less energy than $\bar{E}$ to counter its effect.
+
+\subsection{Arithmatic mean Geometric mean}
+	Why geometric mean should be applied
+
+\section{Acknowledgement}
+	Thank you for Sam Dyson from 2018-19 class of PTNR
+
+\end{document}
