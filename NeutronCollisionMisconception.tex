@@ -101,13 +101,18 @@ https://github.com/OceanNuclear/NeutronLethargy
 
 	
 	However, in section \ref{Incorrect}, the following method is used (See figure \ref{Fig3}) :
+	
 	*Insert Figure 3
-	Due to the non-linearity of the $\Delta u$ vs $E$ a small 'excursion' to the left will contribute a much larger increment in lethargy gain than a small 'excursion' to the right.
+	
+	This will give an incorrect answer because the average $E_f$ as determined by the rectangular area is different from the average as determined by the area under the curve $ \Delta u P(E)$ (which is the product of the two curves).
+
+	Due to the non-linearity of the $\Delta u$ vs $E$ a small 'excursion' to the left will contribute a much larger increment in lethargy gain than decrement in lethargy gain when there is a small 'excursion' to the right.
+	
 	
 	Note that if $\alpha$ is very close to 1, then this non-linearity can be ignored, i.e. at very large atomic masses, e.g. ${}^{238}$U, the above two methods should give very similar results.
 
 	This means that a collision losing slightly more than $\overline{E}$ requires multiple collision losing slightly less energy than $\overline{E}$ to counter its effect.
-	This problem is actually a confusion between arithematic mean (section \ref{Incorrect}) and geometric mean (section \ref{Correct}) in disguise. The former method falsely assumes that an arithmatic mean can be done, finding the arithmatic average of the energy lost, instead of the geometric average of $E$ (which is identical to the arithmetic average of $\Delta u$).
+	This problem is actually a confusion between arithematic mean (section \ref{Incorrect}) and geometric mean (section \ref{Correct}) in disguise. The former method falsely assumes that an arithmatic mean can be done, finding the arithmatic average of the energy lost $\Delta E = E_i-E_f$, instead of the geometric average of $\Delta E$ (which is identical to the arithmetic average of $\Delta u$).
 
 \section{Acknowledgement}
 	Many thanks to Sam Dyson for his helpful input in discussing and assisting the formulation of this paper.
