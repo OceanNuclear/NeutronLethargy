@@ -11,7 +11,7 @@ x_rect=np.concatenate([[0,alpha],x,[1]])
 y=alpha*(x-x+1)#hack to make y=alpha with the same shape of x, quickly.
 y_rect=np.concatenate([[0,0],y,[0]])
 
-Figure = "Fig1"
+Figure = "Fig3"
 
 if Figure=="Fig1":
 	#Create other distributions
@@ -25,7 +25,7 @@ if Figure=="Fig1":
 	ax.set_xticks([alpha,1])
 	ax.set_xticklabels([r"$\alpha E_i$",r"$E_i$"])
 	ax.set_xlabel(r"Final energy after collision $E_f$")
-	ax.set_xlim(0,1.004)
+	ax.set_xlim(0,1.002)
 
 if Figure=="Fig2":
 	x2 = np.linspace(0,-np.log(alpha))
@@ -56,6 +56,7 @@ if Figure=="Fig3":
 		ydot.append(np.log(1/midpt))
 	ax.plot(xdot,ydot, linestyle="--")
 	ax.set_xlim(0,1.004)
+	ax.set_xlabel(r"Final energy after collision $E_f$")
 
 #set y axes, legend, and save.
 ax.set_ylim(bottom=0)
