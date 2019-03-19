@@ -3,12 +3,13 @@ from numpy import cos, arccos, sin, arctan, tan, pi, sqrt; from numpy import arr
 from matplotlib import pyplot as plt
 
 alpha=0.4
+height = 0.5
 
 x=np.linspace(alpha,1)
 #Create the square distribution
 fig,ax = plt.subplots()
 x_rect=np.concatenate([[0,alpha],x,[1]])
-y=alpha*(x-x+1)#hack to make y=alpha with the same shape of x, quickly.
+y=height*(x-x+1)#hack to make y=alpha with the same shape of x, quickly.
 y_rect=np.concatenate([[0,0],y,[0]])
 
 Figure = "Fig3"
@@ -49,14 +50,17 @@ if Figure=="Fig3":
 	midpt=(alpha+1)/2
 	if "Dotted line":
 		xdot=[midpt]
-		ydot=[0.4]
+		ydot=[height]
 		xdot.append(midpt)
 		ydot.append(np.log(1/midpt))
 		xdot.append(0)
 		ydot.append(np.log(1/midpt))
 	ax.plot(xdot,ydot, linestyle="--")
-	ax.set_xlim(0,1.004)
+	ax.set_xlim(0,1.002)
 	ax.set_xlabel(r"Final energy after collision $E_f$")
+	ax.set_xlabel(r"Final energy after collision $E_f$")
+	ax.set_xticks([alpha,1])
+	ax.set_xticklabels([r"$\alpha E_i$",r"$E_i$"])
 
 #set y axes, legend, and save.
 ax.set_ylim(bottom=0)
