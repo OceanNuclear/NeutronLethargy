@@ -88,23 +88,25 @@ https://github.com/OceanNuclear/NeutronLethargy
 	
 	*Insert figure 1
 	
-	Multiplying $P(E)$ by $\Delta u(E)$ gives a quantity with the dimension of "Lethargy per unit energy".
-	Integrating $\Delta u(E) P(E)$ gives the mean lethargy change.
+	Multiplying $P(E)$ by $\Delta u(E)$ gives a quantity with the dimension of "Lethargy per unit energy".\\
+	Integrating $\Delta u(E) P(E)$ over $E$ gives the mean lethargy change.
 
 	
 	Alternatively, if one wishes to work with $\Delta u$,
 	
 	*Insert Figure 2
 	
-	In figure \ref{Fig2}, multiplying $P(u)$ 
-	Integrating $\Delta u(E) P(E)$ gives the mean lethargy change.
+	In figure \ref{Fig2}, multiplying $P(\Delta u)$ by $\Delta u$ gives a dimensionless quantity. \\
+	Integrating $P(\Delta u) \Delta u$ over $\Delta u$ gives the mean lethargy change.
+	
+	Note that figure \ref{Fig1} is oriented in the opposite direction as figure \ref{Fig2}, neutrons starts with a high initial energy $E_i$ (RHS of the former graph)/ zero lethargy (RHS of the latter graph) $\Delta u=0$, and scatter down to lower energy/ greater lethargy, with the minimum energy achievable $= \alpha E_i$/ maximum lethargy gained $= ln(\alpha)$ in a single scatter
 
 	
 	However, in section \ref{Incorrect}, the following method is used (See figure \ref{Fig3}) :
 	
 	*Insert Figure 3
 	
-	This will give an incorrect answer because the average $E_f$ as determined by the rectangular area is different from the average as determined by the area under the curve $ \Delta u P(E)$ (which is the product of the two curves).
+	This will give an incorrect answer because the average $E_f$ as determined by the rectangular area is different from the average as determined by the area under the curve $ \Delta u P(E)$ (product of the two curves drawn).
 
 	Due to the non-linearity of the $\Delta u$ vs $E$ a small 'excursion' to the left will contribute a much larger increment in lethargy gain than decrement in lethargy gain when there is a small 'excursion' to the right.
 	
@@ -115,6 +117,6 @@ https://github.com/OceanNuclear/NeutronLethargy
 	This problem is actually a confusion between arithematic mean (section \ref{Incorrect}) and geometric mean (section \ref{Correct}) in disguise. The former method falsely assumes that an arithmatic mean can be done, finding the arithmatic average of the energy lost $\Delta E = E_i-E_f$, instead of the geometric average of $\Delta E$ (which is identical to the arithmetic average of $\Delta u$).
 
 \section{Acknowledgement}
-	Many thanks to Sam Dyson for his helpful input in discussing and assisting the formulation of this paper.
+	Many thanks to Sam Dyson for his helpful input in discussing and assisting the formulation of this article.
 
 \end{document}
