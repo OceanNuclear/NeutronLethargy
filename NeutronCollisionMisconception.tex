@@ -39,8 +39,8 @@ Which corresponds to the procedure as follows:
 
 In a single equation, this is represented as:
 \begin{align}
-	N=\frac{u(2MeV) - 2(1eV)}{\Delta u \left(\int E P(E) dE \right) }
-	N=\frac{ln\left(2000000\right)}{ln\left(\frac{1+\alpha}{2} \right)}
+	N&=\frac{u(2MeV) - 2(1eV)}{\Delta u \left(\int E P(E) dE \right) }\\
+	N&=\frac{ln\left(2000000\right)}{ln\left(\frac{1+\alpha}{2} \right)}
 \end{align}
 Which gives the incorrect answer of 22.7 collisions for 2MeV neutrons moderated by Deuterium $A=2$
 
@@ -132,7 +132,7 @@ in the repository
 	Consider 4 hypothetical collisional events:
 
 	\subsection{No variation in factor of energy loss}
-	If all collisional events gives away \emph{exactly} the same amount of energy as in the mid-point of the distrbution (green line in figure \ref{Fig3}), then the lethargy lost calculated by both methods in section \ref{Incorrect} and \ref{Correct} will be the same.
+	If all collisions scale down the energy by \emph{exactly} the same factor everytime, i.e. corresponding to the mid-point of the rectangular probability density distrbution (green line in figure \ref{Fig3}), then the lethargy lost calculated by both methods in section \ref{Incorrect} and \ref{Correct} will be the same.
 	\begin{itemize}
 		\item Factor of reduction in energy after each collisional event = \begin{verbatim}
 			0.6, 0.6, 0.6, 0.6
