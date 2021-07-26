@@ -11,11 +11,12 @@ A=2	#Atomic mass
 alpha = ((A-1)/(A+1))**2
 MeV=1E6
 eV=1
+StartingE=2*MeV
+ThermalEnergy = 1*eV#thermal threshold, below which we "kill" the particle
 
 def Thermalize(): #function to calculate number of collisions required to thermalize.
 	NumCol=0
-	E_n = 2*MeV#Starting energy
-	ThermalEnergy = 1*eV#thermal threshold, below which we "kill" the particle
+	E_n = StartingE
 	while (E_n > ThermalEnergy):
 		NumCol+=1
 		E_loss_factor=uni(alpha,1)
@@ -29,3 +30,5 @@ for n in range(NumSim):
 print(np.mean(ColToTherm))
 plt.hist(ColToTherm,bins=max(ColToTherm)-min(ColToTherm)+1)
 plt.show()
+
+print("analytical result requies number of collisions = ",np.log(StartingE/ThermalEnergy)/(1+alpha/(1-alpha)*np.log(alpha)))
